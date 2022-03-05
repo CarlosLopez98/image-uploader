@@ -1,10 +1,16 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import "./upload.css";
 
-const Upload = ({ link }) => {
+const Upload = ({ link, actions }) => {
   const [copyMessage, setCopyMessage] = useState(false);
   const imageLink = link;
+
+  useEffect(() => {
+    actions.postFile();
+  }, []);
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(imageLink);
@@ -17,8 +23,19 @@ const Upload = ({ link }) => {
 
   return (
     <div className="container">
-      <div className="check">
-        <div className="icon"></div>
+      <div className="header">
+        <div className="back">
+          <FontAwesomeIcon
+            onClick={() => {
+              actions.setLoaded(false);
+            }}
+            className="icon-back"
+            icon={faArrowLeft}
+          />
+        </div>
+        <div className="check">
+          <div className="icon"></div>
+        </div>
       </div>
       <h2 className="title">Uploaded Successfully!</h2>
       <div

@@ -1,3 +1,22 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 90%;
+}
+
+.back {
+  width: 100%;
+  font-size: 24px;
+  color: #1b3352;
+}
+
+.back .icon-back:hover {
+  cursor: pointer;
+  color: var(--blue-1);
+}
+
 .check {
   display: flex;
   justify-content: center;

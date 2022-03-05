@@ -5,13 +5,11 @@ import "./main.css";
 
 const Main = ({ actions }) => {
   const uploadFile = (file) => {
-    console.log(file);
-    actions.setFile(
+    actions.upload(
       Object.assign(file, {
         preview: URL.createObjectURL(file),
       })
     );
-    actions.upload();
   };
 
   const onChoosed = (file) => {
@@ -43,6 +41,7 @@ const Main = ({ actions }) => {
       </label>
       <input
         id="file"
+        name="file"
         type="file"
         accept="image/*"
         onChange={onChoosed}
